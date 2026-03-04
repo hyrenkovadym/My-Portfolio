@@ -7,9 +7,10 @@ import { ProductsModule } from "./products/products.module";
 import { CategoriesModule } from "./categories/categories.module";
 import { AdminProductsController } from "./products/admin-products.controller";
 import { RequireAdminGuard } from "./common/require-admin.guard";
+import { CartModule } from "./cart/cart.module";
 
 @Module({
-  imports: [PrismaModule, AuthModule, ProductsModule, CategoriesModule],
+  imports: [PrismaModule, AuthModule, ProductsModule, CategoriesModule, CartModule],
   controllers: [AppController, AdminProductsController],
   providers: [AppService, RequireAdminGuard],
 })
