@@ -193,12 +193,95 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: 1.4fr 1fr;
-  align-items: center;
+  align-items: start;
 }
 
 .contact-card p {
   margin: 0.55rem 0 0;
   color: var(--ink-700);
+}
+
+.contact-copy {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.contact-email-label {
+  margin: 0.8rem 0 0;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-500);
+}
+
+.contact-email-link {
+  font-family: var(--font-heading), "Segoe UI", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.26rem);
+  font-weight: 700;
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contact-form {
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.form-field {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--ink-700);
+}
+
+.form-input {
+  width: 100%;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 0.62rem 0.72rem;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink-900);
+  font: inherit;
+}
+
+.form-input:focus {
+  outline: 2px solid rgba(201, 74, 31, 0.3);
+  outline-offset: 1px;
+  border-color: rgba(201, 74, 31, 0.42);
+}
+
+.form-textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.contact-form .button {
+  margin-top: 0.5rem;
+  justify-self: start;
+}
+
+.contact-form-note {
+  margin: 0.2rem 0 0;
+  font-size: 0.84rem;
+  color: var(--ink-500);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .footer {
