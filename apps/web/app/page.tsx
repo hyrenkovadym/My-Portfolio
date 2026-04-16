@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import {
+  aboutFacts,
   featuredProjects,
   highlights,
   knowledgeGroups,
@@ -50,6 +51,12 @@ export default function Home() {
           <h1>{profile.role}</h1>
           <p className="lead">{profile.intro}</p>
           <p className="sublead">{profile.summary}</p>
+
+          <ul className="profile-facts">
+            {aboutFacts.map((fact) => (
+              <li key={fact}>{fact}</li>
+            ))}
+          </ul>
 
           <div className="hero-actions">
             <a className="button button-primary" href="#knowledge">
@@ -177,7 +184,10 @@ export default function Home() {
               className="featured-project-card reveal"
               style={{ "--index": index } as CSSProperties}
             >
-              <p className="project-category">{project.subtitle}</p>
+              <div className="project-heading-meta">
+                <p className="project-category">{project.subtitle}</p>
+                {project.scope ? <span className="project-scope">{project.scope}</span> : null}
+              </div>
               <h3>{project.title}</h3>
               <p className="project-description">{project.description}</p>
 
@@ -198,9 +208,16 @@ export default function Home() {
               {project.note ? <p className="project-note">{project.note}</p> : null}
 
               <div className="project-actions">
-                <a href={project.repoUrl} className="project-link" target="_blank" rel="noreferrer">
-                  Open GitHub Repo
-                </a>
+                {project.repoUrl ? (
+                  <a href={project.repoUrl} className="project-link" target="_blank" rel="noreferrer">
+                    {project.linkLabel ?? "Open GitHub Repo"}
+                  </a>
+                ) : null}
+                {project.liveUrl ? (
+                  <a href={project.liveUrl} className="project-link" target="_blank" rel="noreferrer">
+                    Open Live Site
+                  </a>
+                ) : null}
               </div>
             </article>
           ))}

@@ -8,8 +8,8 @@ import "@fontsource/syne/700.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Backend-first Fullstack",
-  description: "Personal portfolio with a production-minded backend and a polished frontend experience.",
+  title: "Вадим Гиренко | Portfolio",
+  description: "Portfolio of Vadym Hyrenko: backend, AI integrations, mobile and web products.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

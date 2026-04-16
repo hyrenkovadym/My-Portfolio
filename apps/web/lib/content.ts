@@ -1,84 +1,112 @@
 export const profile = {
-  name: "Vadym Hyrenko",
+  name: "Вадим Гиренко",
   role: "Fullstack Developer focused on Backend, Mobile and AI",
-  location: "Kyiv, Ukraine",
+  location: "Vinnytsia, Ukraine",
   intro:
-    "I build backend systems first, then turn them into user-friendly products with smooth frontend and mobile UX.",
+    "I am 21, I work as a programmer at FRENDT, and I build practical products from backend logic to production-ready UI.",
   summary:
-    "I care about practical products: stable APIs, useful AI flows, and interfaces that feel fast and clear.",
+    "My projects combine Telegram automation, AI integrations, mobile apps, and web products for real users.",
   email: "hello@yourdomain.dev",
   github: "https://github.com/hyrenkovadym",
   linkedin: "https://www.linkedin.com/in/hyrenkovadym/",
-  photo: "/profile-placeholder.svg",
+  photo: "/vadym-profile.webp",
 };
+
+export const aboutFacts = [
+  "21 years old, based in Vinnytsia.",
+  "Working at FRENDT as a programmer.",
+  "Comfortable with backend-heavy and product-facing tasks.",
+  "Studied automated testing at EPAM and passed the final exam project.",
+];
 
 export const highlights = [
   {
-    title: "Backend Architecture",
-    text: "NestJS and Express services with clear contracts, authentication, and scalable module structure.",
+    title: "Automation and Bots",
+    text: "Telegram-first workflows for clients and staff, including approvals, reminders, and media scenarios.",
   },
   {
-    title: "Mobile Delivery",
-    text: "React Native plus Expo apps with practical UX for real users, not demo-only prototypes.",
+    title: "AI in Production",
+    text: "OpenAI integrations for chat, file processing, image analysis, and voice transcription.",
   },
   {
-    title: "AI Integration",
-    text: "OpenAI-powered features built around real tasks like analysis, recommendations, and support flows.",
+    title: "Product Delivery",
+    text: "From architecture and APIs to polished frontend/mobile UX, with focus on maintainability and clarity.",
   },
 ];
 
 export const stack = [
+  "Python",
   "TypeScript",
   "Node.js",
   "NestJS",
   "Express",
   "PostgreSQL",
   "Prisma",
+  "Telegram Bot API",
   "React Native",
   "Expo",
+  "React + Vite",
   "OpenAI API",
+  "Google Sheets API",
+  "Google Drive API",
   "JWT Auth",
+  "WebDriverIO",
+  "Mocha",
   "Docker",
-  "Python",
 ];
 
 export const knowledgeGroups = [
   {
-    title: "Backend",
-    items: ["REST API design", "Auth flows", "Business logic", "Service architecture"],
+    title: "Backend and Integrations",
+    items: ["REST API design", "Auth flows", "Google APIs", "Data processing pipelines"],
   },
   {
-    title: "Mobile",
-    items: ["React Native UI", "Expo workflows", "Image pickers", "State-driven screens"],
+    title: "AI Workflows",
+    items: ["OpenAI chat + vision", "Voice transcription", "Prompt strategy", "Model fallback logic"],
   },
   {
-    title: "AI",
-    items: ["Prompt shaping", "OpenAI integration", "Context-aware analysis", "User-facing recommendations"],
+    title: "Frontend and Testing",
+    items: ["React/Vite UI", "Portfolio UX", "E2E thinking", "Automated test scenarios"],
   },
 ];
 
-export const featuredProjects = [
+export const featuredProjects: FeaturedProject[] = [
   {
-    slug: "telegram-bot-with-ai",
-    title: "Telegram Bot with AI",
-    subtitle: "Python bot",
+    slug: "frendt-bot",
+    title: "FRENDT Bot (Telegram + AI)",
+    subtitle: "Commercial bot for clients and internal staff",
+    scope: "Commercial",
     description:
-      "AI-powered Telegram assistant built in Python with practical user flows and automation-ready structure.",
+      "A multi-mode Python Telegram bot with client support flows and full internal HR/staff automation.",
     repoUrl: "https://github.com/hyrenkovadym/Telegram-Bot-with-AI",
-    tech: ["Python", "Telegram Bot API", "OpenAI API"],
-    bullets: [
-      "Conversational assistant behavior",
-      "Integration-ready command flow",
-      "Clean base for new AI features",
+    linkLabel: "Public bot repository",
+    tech: [
+      "Python 3.12",
+      "python-telegram-bot",
+      "OpenAI API",
+      "PostgreSQL",
+      "Google Sheets API",
+      "Google Drive API",
+      "Docker",
     ],
+    bullets: [
+      "Client mode: requests, menu, service/cable scenarios, voice and file processing.",
+      "Staff mode: vacations, approvals, salary flows, issue board, intern tasks, internal AI chat.",
+      "Media pipelines: case folders in Google Drive and logging in Google Sheets.",
+      "AI helpers: chat, vision, embeddings, transcription, fallback models.",
+      "Background automation: approval reminders and scheduled accrual checks.",
+    ],
+    note: "Production variant is used in company workflows; public repository demonstrates the core direction.",
   },
   {
     slug: "agro-ai-scout",
     title: "Agro AI Scout",
     subtitle: "Mobile app for farmers and agronomy teams",
+    scope: "Product",
     description:
       "App that analyzes plant photos with AI, helps detect likely issues, and gives practical recommendations.",
     repoUrl: "https://github.com/hyrenkovadym/Agro-AI-scout-app",
+    linkLabel: "Open GitHub Repo",
     tech: [
       "TypeScript",
       "React Native",
@@ -95,4 +123,67 @@ export const featuredProjects = [
     ],
     note: "AI output is preliminary and should be validated by an agronomist for critical decisions.",
   },
+  {
+    slug: "terranavix-site",
+    title: "TerraNavix Site (English Landing)",
+    subtitle: "Product landing page for autosteer system",
+    scope: "Frontend",
+    description:
+      "A clean React + Vite marketing site focused on UX clarity for English-speaking users.",
+    repoUrl: "https://github.com/hyrenkovadym/Terranavix-site-Eng",
+    linkLabel: "Open GitHub Repo",
+    tech: ["React", "Vite", "CSS", "SPA UX"],
+    bullets: [
+      "Hero, product benefits, kit overview, and use-case sections.",
+      "Prepared architecture for ROI, FAQ, and contact form expansion.",
+      "Optimized for static hosting and fast delivery.",
+    ],
+  },
+  {
+    slug: "currency-tracker",
+    title: "Currency, Crypto and Metals Tracker",
+    subtitle: "Full-stack dashboard with API gateway backend",
+    scope: "Fullstack",
+    description:
+      "Tracks FX, crypto, and metals using external APIs with custom SVG charts and route-based dashboards.",
+    repoUrl: "https://github.com/hyrenkovadym/currency-tracker",
+    linkLabel: "Open GitHub Repo",
+    tech: ["React", "TypeScript", "Vite", "Node.js", "Express", "SVG charts"],
+    bullets: [
+      "NBU spot and historical rates with conversion logic.",
+      "Binance ticker and kline integration for crypto charts.",
+      "Express backend as CORS-safe API proxy with normalization layer.",
+      "Interactive charts with tooltip, crosshair, and highlighted nearest point.",
+    ],
+  },
+  {
+    slug: "inventory-logic-tests",
+    title: "Inventory Logic Tests (EPAM exam project)",
+    subtitle: "Automated testing project for SauceDemo",
+    scope: "QA",
+    description:
+      "Exam project completed during EPAM automated testing training, focused on sorting and cart state logic.",
+    repoUrl: "https://github.com/hyrenkovadym/inventory-logic-tests",
+    linkLabel: "Open GitHub Repo",
+    tech: ["WebDriverIO", "JavaScript", "Mocha", "XPath", "Page Object Model"],
+    bullets: [
+      "Validated price sorting flow from UI values to numeric assertions.",
+      "Verified cart badge and cart content state after add/remove actions.",
+      "Structured tests with reusable components and utility functions.",
+    ],
+    note: "This project was used as a final exam and was successfully passed.",
+  },
 ];
+export type FeaturedProject = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  scope: string;
+  description: string;
+  repoUrl?: string;
+  liveUrl?: string;
+  linkLabel?: string;
+  tech: string[];
+  bullets: string[];
+  note?: string;
+};

@@ -48,6 +48,11 @@
   .featured-project-grid {
     grid-template-columns: 1fr;
   }
+
+  .project-heading-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
