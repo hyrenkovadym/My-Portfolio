@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { ContactForm } from "@/app/components/contact-form";
 import {
   aboutFacts,
   featuredProjects,
@@ -258,75 +259,7 @@ export default function Home() {
           </div>
         </div>
 
-        <form
-          className="contact-form"
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-        >
-          <input type="hidden" name="form-name" value="contact" />
-          <p className="sr-only">
-            <label htmlFor="bot-field">
-              Do not fill this field
-              <input id="bot-field" name="bot-field" />
-            </label>
-          </p>
-
-          <label className="form-field" htmlFor="company">
-            Company
-          </label>
-          <input
-            id="company"
-            name="company"
-            className="form-input"
-            type="text"
-            placeholder="Company name"
-            required
-          />
-
-          <label className="form-field" htmlFor="contact-person">
-            Contact person
-          </label>
-          <input
-            id="contact-person"
-            name="contactPerson"
-            className="form-input"
-            type="text"
-            placeholder="Your name"
-            required
-          />
-
-          <label className="form-field" htmlFor="contact-email">
-            Work email
-          </label>
-          <input
-            id="contact-email"
-            name="contactEmail"
-            className="form-input"
-            type="email"
-            placeholder="name@company.com"
-            required
-          />
-
-          <label className="form-field" htmlFor="project-message">
-            Project notes
-          </label>
-          <textarea
-            id="project-message"
-            name="projectMessage"
-            className="form-input form-textarea"
-            placeholder="Tell me about your project, stack, and timeline..."
-            required
-          />
-
-          <button type="submit" className="button button-primary">
-            Send request
-          </button>
-          <p className="contact-form-note">
-            After submit, I receive this message in email from the portfolio form.
-          </p>
-        </form>
+        <ContactForm />
       </section>
 
       <footer className="footer">

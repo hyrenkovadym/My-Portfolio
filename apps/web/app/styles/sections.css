@@ -267,10 +267,29 @@
   justify-self: start;
 }
 
+.contact-form .button:disabled {
+  opacity: 0.75;
+  cursor: progress;
+}
+
 .contact-form-note {
   margin: 0.2rem 0 0;
   font-size: 0.84rem;
   color: var(--ink-500);
+}
+
+.contact-form-feedback {
+  margin: 0.2rem 0 0;
+  font-size: 0.87rem;
+  font-weight: 600;
+}
+
+.contact-form-feedback-success {
+  color: #2f6e43;
+}
+
+.contact-form-feedback-error {
+  color: #b13f1f;
 }
 
 .sr-only {
