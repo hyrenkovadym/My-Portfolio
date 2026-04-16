@@ -50,8 +50,7 @@
   }
 
   .project-heading-meta {
-    flex-direction: column;
-    align-items: flex-start;
+    grid-template-columns: 1fr;
   }
 }
 

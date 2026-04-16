@@ -75,6 +75,9 @@ export default function Home() {
             <a href={profile.linkedin} target="_blank" rel="noreferrer">
               LinkedIn
             </a>
+            <a href={profile.telegram} target="_blank" rel="noreferrer">
+              Telegram
+            </a>
           </div>
         </div>
 
@@ -122,9 +125,6 @@ export default function Home() {
             <p className="eyebrow">MY KNOWLEDGE</p>
             <h2>What I Know and Build</h2>
           </div>
-          <p className="section-note">
-            Clicked from the top buttons, this block moves in with a smooth left transition.
-          </p>
         </div>
 
         <div className="highlights-grid">
@@ -234,11 +234,22 @@ export default function Home() {
           </p>
         </div>
         <div className="hero-actions">
-          <a className="button button-primary" href={`mailto:${profile.email}`}>
+          <a
+            className="button button-primary"
+            href={`mailto:${profile.email}?subject=Portfolio%20Inquiry`}
+          >
             Send email
           </a>
           <a className="button button-ghost" href={profile.github} target="_blank" rel="noreferrer">
             Open GitHub
+          </a>
+          <a
+            className="button button-ghost"
+            href={profile.telegram}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open Telegram
           </a>
         </div>
       </section>

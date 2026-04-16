@@ -1,14 +1,52 @@
-export const profile = {
-  name: "Вадим Гиренко",
+export type Profile = {
+  name: string;
+  role: string;
+  location: string;
+  intro: string;
+  summary: string;
+  email: string;
+  github: string;
+  linkedin: string;
+  telegram: string;
+  photo: string;
+};
+
+export type Highlight = {
+  title: string;
+  text: string;
+};
+
+export type KnowledgeGroup = {
+  title: string;
+  items: string[];
+};
+
+export type FeaturedProject = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  scope: string;
+  description: string;
+  repoUrl?: string;
+  liveUrl?: string;
+  linkLabel?: string;
+  tech: string[];
+  bullets: string[];
+  note?: string;
+};
+
+export const profile: Profile = {
+  name: "Vadym Hyrenko",
   role: "Fullstack Developer focused on Backend, Mobile and AI",
   location: "Vinnytsia, Ukraine",
   intro:
     "I am 21, I work as a programmer at FRENDT, and I build practical products from backend logic to production-ready UI.",
   summary:
     "My projects combine Telegram automation, AI integrations, mobile apps, and web products for real users.",
-  email: "hello@yourdomain.dev",
+  email: "girenkovadim68@gmail.com",
   github: "https://github.com/hyrenkovadym",
-  linkedin: "https://www.linkedin.com/in/hyrenkovadym/",
+  linkedin: "https://www.linkedin.com/in/vadym-hyrenko-ab11a5290/",
+  telegram: "https://t.me/hyrenkooo",
   photo: "/vadym-profile.webp",
 };
 
@@ -19,7 +57,7 @@ export const aboutFacts = [
   "Studied automated testing at EPAM and passed the final exam project.",
 ];
 
-export const highlights = [
+export const highlights: Highlight[] = [
   {
     title: "Automation and Bots",
     text: "Telegram-first workflows for clients and staff, including approvals, reminders, and media scenarios.",
@@ -55,7 +93,7 @@ export const stack = [
   "Docker",
 ];
 
-export const knowledgeGroups = [
+export const knowledgeGroups: KnowledgeGroup[] = [
   {
     title: "Backend and Integrations",
     items: ["REST API design", "Auth flows", "Google APIs", "Data processing pipelines"],
@@ -107,19 +145,12 @@ export const featuredProjects: FeaturedProject[] = [
       "App that analyzes plant photos with AI, helps detect likely issues, and gives practical recommendations.",
     repoUrl: "https://github.com/hyrenkovadym/Agro-AI-scout-app",
     linkLabel: "Open GitHub Repo",
-    tech: [
-      "TypeScript",
-      "React Native",
-      "Expo",
-      "Node.js",
-      "Express",
-      "OpenAI API",
-    ],
+    tech: ["TypeScript", "React Native", "Expo", "Node.js", "Express", "OpenAI API"],
     bullets: [
-      "Photo-based plant analysis via OpenAI",
-      "Plant and disease catalog screens",
-      "Auth, profile settings, and analysis history",
-      "Local backend JSON storage for quick iteration",
+      "Photo-based plant analysis via OpenAI.",
+      "Plant and disease catalog screens.",
+      "Auth, profile settings, and analysis history.",
+      "Local backend JSON storage for quick iteration.",
     ],
     note: "AI output is preliminary and should be validated by an agronomist for critical decisions.",
   },
@@ -174,16 +205,3 @@ export const featuredProjects: FeaturedProject[] = [
     note: "This project was used as a final exam and was successfully passed.",
   },
 ];
-export type FeaturedProject = {
-  slug: string;
-  title: string;
-  subtitle: string;
-  scope: string;
-  description: string;
-  repoUrl?: string;
-  liveUrl?: string;
-  linkLabel?: string;
-  tech: string[];
-  bullets: string[];
-  note?: string;
-};

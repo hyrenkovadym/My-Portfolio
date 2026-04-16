@@ -250,7 +250,8 @@
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-soft);
   background: rgba(255, 255, 255, 0.76);
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.58rem;
   min-height: 280px;
   transition: transform 180ms ease, box-shadow 180ms ease;
@@ -262,9 +263,9 @@
 }
 
 .project-heading-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
   gap: 0.6rem;
 }
 
@@ -277,8 +278,14 @@
   color: var(--accent-dark);
   font-size: 0.72rem;
   font-weight: 700;
+  line-height: 1;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.project-category {
+  line-height: 1.35;
 }
 
 .project-bullets {
@@ -288,7 +295,7 @@
 }
 
 .project-bullets li {
-  margin: 0.24rem 0;
+  margin: 0.18rem 0;
 }
 
 .project-tag-list {
@@ -307,6 +314,8 @@
   color: #32503d;
   font-size: 0.79rem;
   font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .project-note {
