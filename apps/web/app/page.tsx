@@ -1,64 +1,34 @@
-import Link from "next/link";
+import Image from "next/image";
 import type { CSSProperties } from "react";
-import { getCategories, getProjects } from "@/lib/api";
-import { highlights, profile, stack } from "@/lib/content";
+import {
+  featuredProjects,
+  highlights,
+  knowledgeGroups,
+  profile,
+  stack,
+} from "@/lib/content";
 
-type SearchParams = {
-  category?: string | string[];
-};
-
-type HomePageProps = {
-  searchParams?: Promise<SearchParams>;
-};
-
-function buildCategoryHref(slug?: string) {
-  if (!slug) {
-    return "/";
-  }
-
-  return `/?category=${encodeURIComponent(slug)}`;
-}
-
-function formatPrice(priceCents: number, currency: string) {
-  try {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency,
-      maximumFractionDigits: 0,
-    }).format(priceCents / 100);
-  } catch {
-    return `${(priceCents / 100).toFixed(0)} ${currency}`;
-  }
-}
-
-export default async function Home({ searchParams }: HomePageProps) {
-  const params = (await searchParams) ?? {};
-  const selectedCategory = Array.isArray(params.category)
-    ? params.category[0]
-    : params.category;
-
-  const [categories, projects] = await Promise.all([
-    getCategories(),
-    getProjects(selectedCategory),
-  ]);
-
-  const visibleCategories = new Set(
-    projects.map((project) => project.category?.name).filter(Boolean),
-  );
-
+export default function Home() {
   const metrics = [
     {
-      label: "Projects Online",
-      value: String(projects.length).padStart(2, "0"),
+      label: "Featured Projects",
+      value: String(featuredProjects.length).padStart(2, "0"),
     },
     {
-      label: "Active Categories",
-      value: String(visibleCategories.size).padStart(2, "0"),
+      label: "Knowledge Blocks",
+      value: String(knowledgeGroups.length).padStart(2, "0"),
     },
     {
       label: "Core Technologies",
       value: String(stack.length).padStart(2, "0"),
     },
+  ];
+
+  const journeyButtons = [
+    { href: "#who-i-am", label: "Who I Am" },
+    { href: "#knowledge", label: "My Knowledge" },
+    { href: "#my-projects", label: "My Projects" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
@@ -68,37 +38,63 @@ export default async function Home({ searchParams }: HomePageProps) {
       <header className="topbar card">
         <p className="brand">{profile.name}</p>
         <nav className="topbar-links" aria-label="Main">
-          <a href="#projects">Projects</a>
-          <a href="#about">Approach</a>
-          <a href="#contact">Contact</a>
+          <a href="#who-i-am">Who I Am</a>
+          <a href="#knowledge">Knowledge</a>
+          <a href="#my-projects">Projects</a>
         </nav>
       </header>
 
-      <section className="hero card">
-        <p className="eyebrow">PORTFOLIO 2026</p>
-        <h1>{profile.role}</h1>
-        <p className="lead">{profile.intro}</p>
-        <p className="sublead">{profile.summary}</p>
+      <section id="who-i-am" className="hero hero-profile card target-slide-right">
+        <div className="profile-copy">
+          <p className="eyebrow">PORTFOLIO 2026</p>
+          <h1>{profile.role}</h1>
+          <p className="lead">{profile.intro}</p>
+          <p className="sublead">{profile.summary}</p>
 
-        <div className="hero-actions">
-          <a className="button button-primary" href="#projects">
-            View cases
-          </a>
-          <a className="button button-ghost" href={`mailto:${profile.email}`}>
-            Send message
-          </a>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#knowledge">
+              My Knowledge
+            </a>
+            <a className="button button-ghost" href="#my-projects">
+              My Projects
+            </a>
+          </div>
+
+          <div className="hero-meta">
+            <span>{profile.location}</span>
+            <a href={profile.github} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+          </div>
         </div>
 
-        <div className="hero-meta">
-          <span>{profile.location}</span>
-          <a href={profile.github} target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          <a href={profile.linkedin} target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-        </div>
+        <figure className="profile-photo-wrap reveal" style={{ "--index": 0 } as CSSProperties}>
+          <Image
+            src={profile.photo}
+            alt={`${profile.name} profile`}
+            className="profile-photo"
+            width={640}
+            height={800}
+            priority
+          />
+        </figure>
       </section>
+
+      <nav className="journey-nav card" aria-label="Section jump">
+        {journeyButtons.map((item, index) => (
+          <a
+            key={item.href}
+            href={item.href}
+            className="journey-button reveal"
+            style={{ "--index": index } as CSSProperties}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
 
       <section className="metrics-grid">
         {metrics.map((metric, index) => (
@@ -113,75 +109,15 @@ export default async function Home({ searchParams }: HomePageProps) {
         ))}
       </section>
 
-      <section id="projects" className="section card">
+      <section id="knowledge" className="section card target-slide-left">
         <div className="section-head">
           <div>
-            <p className="eyebrow">REAL DATA FROM API</p>
-            <h2>Selected Projects</h2>
+            <p className="eyebrow">MY KNOWLEDGE</p>
+            <h2>What I Know and Build</h2>
           </div>
           <p className="section-note">
-            Data is loaded from your NestJS endpoint `GET /products`.
+            Clicked from the top buttons, this block moves in with a smooth left transition.
           </p>
-        </div>
-
-        <div className="chips" role="tablist" aria-label="Project categories">
-          <Link
-            href={buildCategoryHref()}
-            className={`chip ${!selectedCategory ? "chip-active" : ""}`}
-          >
-            All
-          </Link>
-          {categories.map((category) => (
-            <Link
-              key={category.id}
-              href={buildCategoryHref(category.slug)}
-              className={`chip ${selectedCategory === category.slug ? "chip-active" : ""}`}
-            >
-              {category.name}
-            </Link>
-          ))}
-        </div>
-
-        {projects.length === 0 ? (
-          <p className="empty-state">
-            No active projects in this category yet. Add items through the API and they will
-            appear here automatically.
-          </p>
-        ) : (
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <article
-                key={project.id}
-                className="project-card reveal"
-                style={{ "--index": index } as CSSProperties}
-              >
-                <p className="project-category">
-                  {project.category?.name ?? "General"}
-                </p>
-                <h3>{project.title}</h3>
-                <p className="project-description">
-                  {project.description ??
-                    "Description is coming soon. Backend contracts are already ready for this case."}
-                </p>
-                <div className="project-meta">
-                  <span>{formatPrice(project.priceCents, project.currency)}</span>
-                  <span>Stock: {project.stock}</span>
-                </div>
-                <Link href={`/projects/${project.slug}`} className="project-link">
-                  Open case
-                </Link>
-              </article>
-            ))}
-          </div>
-        )}
-      </section>
-
-      <section id="about" className="section card">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">HOW I WORK</p>
-            <h2>Development Approach</h2>
-          </div>
         </div>
 
         <div className="highlights-grid">
@@ -197,6 +133,23 @@ export default async function Home({ searchParams }: HomePageProps) {
           ))}
         </div>
 
+        <div className="knowledge-grid">
+          {knowledgeGroups.map((group, index) => (
+            <article
+              key={group.title}
+              className="knowledge-card reveal"
+              style={{ "--index": index + 1 } as CSSProperties}
+            >
+              <h3>{group.title}</h3>
+              <ul className="knowledge-list">
+                {group.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
         <div className="stack-wrap">
           {stack.map((tech) => (
             <span key={tech} className="stack-chip">
@@ -206,13 +159,61 @@ export default async function Home({ searchParams }: HomePageProps) {
         </div>
       </section>
 
-      <section id="contact" className="section card contact-card">
+      <section id="my-projects" className="section card target-slide-diagonal">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">MY PROJECTS</p>
+            <h2>What I Already Shipped</h2>
+          </div>
+          <p className="section-note">
+            Personal projects with practical use cases in AI, backend, and mobile development.
+          </p>
+        </div>
+
+        <div className="featured-project-grid">
+          {featuredProjects.map((project, index) => (
+            <article
+              key={project.slug}
+              className="featured-project-card reveal"
+              style={{ "--index": index } as CSSProperties}
+            >
+              <p className="project-category">{project.subtitle}</p>
+              <h3>{project.title}</h3>
+              <p className="project-description">{project.description}</p>
+
+              <ul className="project-bullets">
+                {project.bullets.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+
+              <div className="project-tag-list">
+                {project.tech.map((tech) => (
+                  <span key={tech} className="project-tag">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              {project.note ? <p className="project-note">{project.note}</p> : null}
+
+              <div className="project-actions">
+                <a href={project.repoUrl} className="project-link" target="_blank" rel="noreferrer">
+                  Open GitHub Repo
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="contact" className="section card contact-card target-slide-up">
         <div>
           <p className="eyebrow">LETS BUILD</p>
-          <h2>Ready to push this frontend to production quality</h2>
+          <h2>Open to backend, mobile and AI product work</h2>
           <p>
-            Next step can be auth pages, cart flow, and checkout screens in the same design
-            language.
+            If you want, next we can add deeper case-study pages, video demos, and a contact form
+            with backend delivery.
           </p>
         </div>
         <div className="hero-actions">
@@ -227,7 +228,7 @@ export default async function Home({ searchParams }: HomePageProps) {
 
       <footer className="footer">
         <p>
-          {new Date().getFullYear()} - Built with Next.js + NestJS by {profile.name}
+          {new Date().getFullYear()} - Built by {profile.name}
         </p>
       </footer>
     </main>

@@ -7,6 +7,19 @@
   .contact-card {
     grid-template-columns: 1fr;
   }
+
+  .hero-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-photo-wrap {
+    justify-self: start;
+    width: min(320px, 76vw);
+  }
+
+  .journey-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 720px) {
@@ -25,6 +38,14 @@
   }
 
   .detail-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-project-grid {
     grid-template-columns: 1fr;
   }
 }

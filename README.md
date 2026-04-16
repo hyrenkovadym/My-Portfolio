@@ -2,6 +2,10 @@
 
 Full-stack portfolio platform with a production-style backend and a polished frontend.
 
+## Live site
+
+- https://my-portfolio-vh.netlify.app/
+
 ## Stack
 
 Backend (`apps/api`)

@@ -207,3 +207,94 @@
   font-size: 0.84rem;
   padding: 0.6rem 0;
 }
+
+.knowledge-grid {
+  margin-top: 0.95rem;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.knowledge-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.69);
+  padding: 1rem;
+}
+
+.knowledge-card h3 {
+  margin: 0;
+  font-family: var(--font-heading), "Segoe UI", sans-serif;
+  font-size: 1.1rem;
+}
+
+.knowledge-list {
+  margin: 0.55rem 0 0;
+  padding-left: 1.15rem;
+  color: var(--ink-700);
+}
+
+.knowledge-list li {
+  margin: 0.3rem 0;
+}
+
+.featured-project-grid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.featured-project-card {
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.76);
+  display: grid;
+  gap: 0.58rem;
+  min-height: 280px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.featured-project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(31, 43, 55, 0.14);
+}
+
+.project-bullets {
+  margin: 0.25rem 0 0;
+  padding-left: 1.15rem;
+  color: var(--ink-700);
+}
+
+.project-bullets li {
+  margin: 0.24rem 0;
+}
+
+.project-tag-list {
+  margin-top: 0.34rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem;
+}
+
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.34rem 0.62rem;
+  border-radius: 999px;
+  background: rgba(228, 240, 216, 0.88);
+  color: #32503d;
+  font-size: 0.79rem;
+  font-weight: 700;
+}
+
+.project-note {
+  margin: 0.35rem 0 0;
+  color: var(--ink-500);
+  font-size: 0.85rem;
+}
+
+.project-actions {
+  margin-top: auto;
+}

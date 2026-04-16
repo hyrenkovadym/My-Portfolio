@@ -4,10 +4,13 @@ test("renders homepage core sections", async ({ page }) => {
   await page.goto("/");
 
   await expect(
-    page.getByRole("heading", { name: "Backend-first Fullstack Engineer" }),
+    page.getByRole("heading", { name: "Fullstack Developer focused on Backend, Mobile and AI" }),
   ).toBeVisible();
-  await expect(page.getByRole("link", { name: "Projects" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Selected Projects" })).toBeVisible();
+  await expect(
+    page.getByLabel("Section jump").getByRole("link", { name: "My Knowledge" }),
+  ).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What I Already Shipped" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Agro AI Scout" })).toBeVisible();
 });
 
 test("shows not-found UI for unknown project slug", async ({ page }) => {
