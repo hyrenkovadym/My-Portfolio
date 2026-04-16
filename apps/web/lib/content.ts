@@ -160,15 +160,17 @@ export const featuredProjects: FeaturedProject[] = [
     subtitle: "Product landing page for autosteer system",
     scope: "Frontend",
     description:
-      "A clean React + Vite marketing site focused on UX clarity for English-speaking users.",
+      "Landing page for the TerraNavix autosteer guidance kit with conversion-focused sections and interactive product storytelling.",
     repoUrl: "https://github.com/hyrenkovadym/Terranavix-site-Eng",
     linkLabel: "Open GitHub Repo",
-    tech: ["React", "Vite", "CSS", "SPA UX"],
+    tech: ["React 19", "Vite 7", "Plain CSS", "Canvas API", "ESLint 9"],
     bullets: [
-      "Hero, product benefits, kit overview, and use-case sections.",
-      "Prepared architecture for ROI, FAQ, and contact form expansion.",
-      "Optimized for static hosting and fast delivery.",
+      "Sticky header with smooth section scrolling, hero CTA, product value, use-case and ROI blocks.",
+      "Interactive kit section with 6 components, click-to-switch behavior and 8-second auto-rotation.",
+      "Canvas field comparison animation to visualize manual steering vs autosteer guidance.",
+      "Contact form UI with demo submit handler plus base SEO, Open Graph and Twitter metadata.",
     ],
+    note: "Built as a React + Vite SPA and prepared for future ROI/FAQ expansion, form backend integration, and analytics.",
   },
   {
     slug: "currency-tracker",

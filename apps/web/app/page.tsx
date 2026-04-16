@@ -228,10 +228,7 @@ export default function Home() {
         <div>
           <p className="eyebrow">LETS BUILD</p>
           <h2>Open to backend, mobile and AI product work</h2>
-          <p>
-            If you want, next we can add deeper case-study pages, video demos, and a contact form
-            with backend delivery.
-          </p>
+          <p>If you want, next we can add deeper case-study pages, video demos, and a contact form with backend delivery.</p>
         </div>
         <div className="hero-actions">
           <a
