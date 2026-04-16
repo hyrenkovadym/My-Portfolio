@@ -54,6 +54,7 @@ export const aboutFacts = [
   "21 years old, based in Vinnytsia.",
   "Working at FRENDT as a programmer.",
   "Comfortable with backend-heavy and product-facing tasks.",
+  "Build and test local AI environments with secured model execution workflows.",
   "Studied automated testing at EPAM and passed the final exam project.",
 ];
 
@@ -65,6 +66,10 @@ export const highlights: Highlight[] = [
   {
     title: "AI in Production",
     text: "OpenAI integrations for chat, file processing, image analysis, and voice transcription.",
+  },
+  {
+    title: "Local LLM Labs",
+    text: "I run local model environments with Ollama and AnythingLLM, feed knowledge bases, and test model behavior/security boundaries.",
   },
   {
     title: "Product Delivery",
@@ -85,6 +90,10 @@ export const stack = [
   "Expo",
   "React + Vite",
   "OpenAI API",
+  "Ollama",
+  "AnythingLLM",
+  "RAG pipelines",
+  "Knowledge Base Ops",
   "Google Sheets API",
   "Google Drive API",
   "JWT Auth",
@@ -101,6 +110,15 @@ export const knowledgeGroups: KnowledgeGroup[] = [
   {
     title: "AI Workflows",
     items: ["OpenAI chat + vision", "Voice transcription", "Prompt strategy", "Model fallback logic"],
+  },
+  {
+    title: "Local AI and Security Testing",
+    items: [
+      "Ollama local model runtime",
+      "AnythingLLM workspace setup",
+      "Knowledge base ingestion and retrieval tests",
+      "Safety checks before model deployment",
+    ],
   },
   {
     title: "Frontend and Testing",
