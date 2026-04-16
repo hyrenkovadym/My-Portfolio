@@ -229,22 +229,14 @@ export default function Home() {
         <div className="contact-copy">
           <p className="eyebrow">LETS BUILD</p>
           <h2>Open to backend, mobile and AI product work</h2>
-          <p>
-            If you want, next we can add deeper case-study pages, video demos, and a contact form
-            with backend delivery.
-          </p>
+      
           <p className="contact-email-label">Direct email</p>
           <a className="contact-email-link" href={`mailto:${profile.email}`}>
             {profile.email}
           </a>
 
           <div className="hero-actions">
-            <a
-              className="button button-primary"
-              href={`mailto:${profile.email}?subject=Portfolio%20Inquiry`}
-            >
-              Send email
-            </a>
+       
             <a className="button button-ghost" href={profile.github} target="_blank" rel="noreferrer">
               Open GitHub
             </a>
