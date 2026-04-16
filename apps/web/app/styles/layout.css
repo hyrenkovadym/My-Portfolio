@@ -1,0 +1,51 @@
+.page-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, calc(100% - 2rem));
+  margin: 1.1rem auto 3rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.noise-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.noise-layer::before,
+.noise-layer::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(10px);
+  opacity: 0.55;
+  animation: orbit 16s ease-in-out infinite alternate;
+}
+
+.noise-layer::before {
+  width: 320px;
+  height: 320px;
+  left: -120px;
+  top: 24vh;
+  background: linear-gradient(145deg, #ffd1bf, #f5a98f);
+}
+
+.noise-layer::after {
+  width: 280px;
+  height: 280px;
+  right: -80px;
+  top: 50vh;
+  background: linear-gradient(145deg, #dbe7cd, #bfd2a7);
+  animation-duration: 20s;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
+}

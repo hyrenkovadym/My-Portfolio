@@ -1,0 +1,209 @@
+.metrics-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metric-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.68);
+  padding: 1rem;
+}
+
+.metric-card p {
+  margin: 0;
+  color: var(--ink-700);
+  font-size: 0.83rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.metric-card strong {
+  margin-top: 0.35rem;
+  display: block;
+  font-family: var(--font-heading), "Segoe UI", sans-serif;
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+}
+
+.section {
+  padding: clamp(1.15rem, 3vw, 2.1rem);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section h2 {
+  font-size: clamp(1.6rem, 4vw, 2.7rem);
+}
+
+.section-note {
+  max-width: 32ch;
+  margin: 0;
+  color: var(--ink-500);
+  font-size: 0.94rem;
+}
+
+.chips {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.42rem 0.8rem;
+  border: 1px solid var(--border-soft);
+  color: var(--ink-700);
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 0.87rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.chip-active {
+  background: var(--accent-soft);
+  border-color: rgba(201, 74, 31, 0.28);
+  color: var(--accent-dark);
+}
+
+.empty-state {
+  margin: 1.2rem 0 0;
+  color: var(--ink-700);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  border: 1px dashed rgba(31, 43, 55, 0.2);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.projects-grid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.project-card {
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.74);
+  display: grid;
+  gap: 0.55rem;
+  min-height: 220px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(31, 43, 55, 0.14);
+}
+
+.project-card h3 {
+  margin: 0;
+  font-family: var(--font-heading), "Segoe UI", sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.12;
+}
+
+.project-category {
+  margin: 0;
+  color: var(--accent-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-weight: 700;
+  font-size: 0.72rem;
+}
+
+.project-description {
+  margin: 0;
+  color: var(--ink-700);
+  font-size: 0.94rem;
+}
+
+.project-meta {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  color: var(--ink-500);
+  font-size: 0.85rem;
+}
+
+.project-link {
+  margin-top: 0.12rem;
+  color: var(--accent-dark);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 0.9rem;
+}
+
+.highlights-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.highlight-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.67);
+  padding: 1rem;
+}
+
+.highlight-card h3 {
+  margin: 0;
+  font-family: var(--font-heading), "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+}
+
+.highlight-card p {
+  margin: 0.4rem 0 0;
+  color: var(--ink-700);
+  font-size: 0.95rem;
+}
+
+.stack-wrap {
+  margin-top: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.stack-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.42rem 0.75rem;
+  border-radius: 999px;
+  background: var(--mint-soft);
+  color: #34503a;
+  font-weight: 700;
+  font-size: 0.83rem;
+}
+
+.contact-card {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+}
+
+.contact-card p {
+  margin: 0.55rem 0 0;
+  color: var(--ink-700);
+}
+
+.footer {
+  text-align: center;
+  color: var(--ink-700);
+  font-size: 0.84rem;
+  padding: 0.6rem 0;
+}

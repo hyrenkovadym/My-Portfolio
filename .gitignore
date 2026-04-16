@@ -5,3 +5,6 @@ build
 coverage
 .next
 .vscode
+*.tsbuildinfo
+apps/web/playwright-report
+apps/web/test-results
