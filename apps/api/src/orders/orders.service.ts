@@ -15,7 +15,7 @@ export class OrdersService {
       throw new BadRequestException('Cart is empty');
     }
 
-    // Перевірка наявності на складі
+    // Validate stock availability before creating order.
     for (const it of cart.items) {
       if (it.quantity > it.product.stock) {
         throw new BadRequestException(
@@ -30,7 +30,7 @@ export class OrdersService {
       0,
     );
 
-    // Транзакція: створити order + items + списати stock + очистити cart
+    // Transaction: create order/items, decrement stock, then clear cart.
     return this.prisma.$transaction(async (tx) => {
       const order = await tx.order.create({
         data: {
@@ -49,7 +49,7 @@ export class OrdersService {
         include: { items: { include: { product: true } } },
       });
 
-      // списати stock
+      // Decrement stock for each purchased product.
       for (const it of cart.items) {
         await tx.product.update({
           where: { id: it.productId },
@@ -57,7 +57,7 @@ export class OrdersService {
         });
       }
 
-      // очистити корзину
+      // Clear the cart after successful order creation.
       await tx.cartItem.deleteMany({ where: { cartId: cart.id } });
 
       return order;

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import { ContactForm } from "@/app/components/contact-form";
 import {
@@ -10,11 +11,26 @@ import {
   stack,
 } from "@/lib/content";
 
-export default function Home() {
+type HomePageProps = {
+  searchParams: Promise<{ scope?: string }>;
+};
+
+function toScopeSlug(scope: string) {
+  return scope.toLowerCase().replace(/\s+/g, "-");
+}
+
+export default async function Home({ searchParams }: HomePageProps) {
+  const { scope } = await searchParams;
+  const scopes = [...new Set(featuredProjects.map((project) => project.scope))];
+  const selectedScope = scope?.trim().toLowerCase();
+  const filteredProjects = selectedScope
+    ? featuredProjects.filter((project) => project.scope.toLowerCase() === selectedScope)
+    : featuredProjects;
+
   const metrics = [
     {
-      label: "Featured Projects",
-      value: String(featuredProjects.length).padStart(2, "0"),
+      label: "Featured Projects (Filtered)",
+      value: String(filteredProjects.length).padStart(2, "0"),
     },
     {
       label: "Knowledge Blocks",
@@ -167,7 +183,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="my-projects" className="section card target-slide-diagonal">
+      <section id="my-projects" className="section card target-slide-diagonal" data-testid="projects-section">
         <div className="section-head">
           <div>
             <p className="eyebrow">MY PROJECTS</p>
@@ -178,12 +194,33 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="featured-project-grid">
-          {featuredProjects.map((project, index) => (
+        <div className="stack-wrap" data-testid="project-filters">
+          <a className="stack-chip" href="#my-projects" aria-current={selectedScope ? undefined : "page"}>
+            All
+          </a>
+          {scopes.map((projectScope) => {
+            const active = selectedScope === projectScope.toLowerCase();
+            return (
+              <a
+                key={projectScope}
+                className="stack-chip"
+                href={`/?scope=${encodeURIComponent(projectScope)}#my-projects`}
+                aria-current={active ? "page" : undefined}
+                data-testid={`project-filter-${toScopeSlug(projectScope)}`}
+              >
+                {projectScope}
+              </a>
+            );
+          })}
+        </div>
+
+        <div className="featured-project-grid" data-testid="project-list">
+          {filteredProjects.map((project, index) => (
             <article
               key={project.slug}
               className="featured-project-card reveal"
               style={{ "--index": index } as CSSProperties}
+              data-testid="project-card"
             >
               <div className="project-heading-meta">
                 <p className="project-category">{project.subtitle}</p>
@@ -209,6 +246,9 @@ export default function Home() {
               {project.note ? <p className="project-note">{project.note}</p> : null}
 
               <div className="project-actions">
+                <Link href={`/projects/${project.slug}`} className="project-link">
+                  Open Case Page
+                </Link>
                 {project.repoUrl ? (
                   <a href={project.repoUrl} className="project-link" target="_blank" rel="noreferrer">
                     {project.linkLabel ?? "Open GitHub Repo"}
@@ -222,6 +262,14 @@ export default function Home() {
               </div>
             </article>
           ))}
+          {filteredProjects.length === 0 ? (
+            <article className="featured-project-card" data-testid="project-list-empty">
+              <h3>No projects in this filter yet</h3>
+              <p className="project-description">
+                Try another scope to review the complete portfolio set.
+              </p>
+            </article>
+          ) : null}
         </div>
       </section>
 

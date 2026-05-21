@@ -187,6 +187,14 @@
   color: #34503a;
   font-weight: 700;
   font-size: 0.83rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.stack-chip[aria-current="page"] {
+  background: rgba(255, 217, 199, 0.76);
+  border-color: rgba(201, 74, 31, 0.3);
+  color: var(--accent-dark);
 }
 
 .contact-card {
